@@ -20,7 +20,7 @@ module.exports = function (config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jspm', 'mocha', 'chai-sinon',  'dirty-chai'],
+    frameworks: ['mocha', 'chai-sinon', 'jspm'],
 
     // // list of files / patterns to load in the browser
     files: [
@@ -49,16 +49,15 @@ module.exports = function (config) {
       useBundles: true,
       config: "jspm.config.js",
       packages: "jspm_packages",
-      browser: "jspm.browser.js",
       loadFiles: [
         'jspm_packages/system-polyfills.js',
+        'tests/karmaEnv.js',
         testFiles
       ],
-      serveFiles: [ sourceFiles, ],
+      serveFiles: [sourceFiles,],
       "paths": {
         // '*': 'base/*.js',
       },
-      stripExtension: false
     },
     // // list of paths mappings
     // // can be used to map paths served by the Karma web server to /base/ content

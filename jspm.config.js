@@ -2,13 +2,17 @@ SystemJS.config({
   paths: {
     "npm:": "jspm_packages/npm/",
     "github:": "jspm_packages/github/",
-    "demo-module/": "src/lib/"
+    "testUtils": "tests",
+    "jspm": "jspm_packages",
+    "demo-module/": "src/"
   },
   devConfig: {
     "map": {
       "chai": "npm:chai@3.5.0",
       "es-module-loader": "npm:es-module-loader@1.3.5",
-      "plugin-babel": "npm:systemjs-plugin-babel@0.0.12"
+      "plugin-babel": "npm:systemjs-plugin-babel@0.0.12",
+      "chai-as-promised": "npm:chai-as-promised@6.0.0",
+      "dirty-chai": "npm:dirty-chai@1.2.2"
     },
     "packages": {
       "npm:chai@3.5.0": {
@@ -22,12 +26,18 @@ SystemJS.config({
         "map": {
           "type-detect": "npm:type-detect@0.1.1"
         }
+      },
+      "npm:chai-as-promised@6.0.0": {
+        "map": {
+          "check-error": "npm:check-error@1.0.2"
+        }
       }
     }
   },
   transpiler: "plugin-babel",
   packages: {
     "demo-module": {
+      "defaultExtension": "js",
       "main": "index.js",
       "meta": {
         "*.js": {
@@ -37,6 +47,12 @@ SystemJS.config({
       "babelOptions": {
         "sourceMaps": true
       }
+    },
+    "jspm": {
+      "defaultExtension": "js"
+    },
+    "testUtils": {
+      "defaultExtension": "js"
     }
   },
   meta: {

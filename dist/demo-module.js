@@ -16,9 +16,13 @@ var method = function method(param) {
 function asyncMethod() {
   return Promise.resolve(42);
 }
+function unused() {
+  this.code = 'unusedPath';
+}
 
 exports.method = method;
 exports.asyncMethod = asyncMethod;
+exports.unused = unused;
 exports['default'] = method;
 
 }((this.demoModule = this.demoModule || {})));
