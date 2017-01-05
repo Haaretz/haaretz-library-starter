@@ -1,9 +1,8 @@
-import {method, asyncMethod} from '../index';
-
-// import System from 'systemjs'
+import { method, asyncMethod } from './index';
 
 describe('method', function () {
   jsdom();
+
   it('is a function', function () {
     expect(method).to.be.a('function');
   });
@@ -16,12 +15,5 @@ describe('method', function () {
   it('shows async flows', function () {
     expect(asyncMethod()).to.eventually.equal(42);
   });
-  it('uses system', (done) => {
-    System.import('buffer').then(buffer => {
-        expect(buffer).to.exist();
-        done();
-      }
-    )
-  })
 });
 

@@ -9,10 +9,11 @@ jspm_packages
 coverage
 
 # Ignore generated files
+/.tmp
 /css
 /sgSrc/assets
 /styleguide
-/js/dist
+/dist
 
 # Ignore ternjs port
 .tern-port
