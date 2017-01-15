@@ -7,21 +7,3 @@
  * @license MIT
  */
 
-export const method = function method(param) {
-  if (param === 15) {
-    let a = {a:2};
-    let b = {...a,c:3};
-    console.log(b);
-    console.log(b);
-    throw new Error({ message: ('this is not checked') });
-  }
-  return param > 0;
-};
-
-export function asyncMethod() {
-  return Promise.resolve(42);
-}
-
-export function unused() {
-  this.code = 'unusedPath';
-}
