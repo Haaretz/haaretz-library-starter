@@ -29,6 +29,7 @@
   },
   "main": "dist/demo-module.min.js",
   "jsnext:main": "src/index.js",
+  "module":"src/index.js",
   "devDependencies": {
     "autoprefixer": "^6.6.1",
     "babel-cli": "^6.18.0",

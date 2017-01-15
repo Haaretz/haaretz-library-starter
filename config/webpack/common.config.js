@@ -6,6 +6,9 @@ module.exports = {
       './src/index.js'
     ]
   },
+  resolve: { // see more info here https://github.com/webpack/webpack/issues/1979
+    mainField: ['module','jsnext:browser', 'jsnext:main', 'browser', 'main']
+  },
   node: {
     global: true,
     process: false,
@@ -17,7 +20,7 @@ module.exports = {
   module: {
     rules: [
       {
-        enforce:"pre",
+        enforce: "pre",
         test: /\.js$/,
         loader: "source-map-loader"
       },
