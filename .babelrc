@@ -30,9 +30,16 @@
   "env": {
     "test": {
       "plugins": [
-        "istanbul"
+        "istanbul",
+        "rewire",
+        [
+          "transform-es2015-modules-commonjs-simple",
+          {
+            "noMangle": true
+          }
+        ]
       ]
     }
   },
-  "sourceMaps": "inline"
+  "sourceMaps": "both"
 }

@@ -1,7 +1,8 @@
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const pkg = require('../getPackageName');
 module.exports = {
   entry: {
-    'lib': [
+    [pkg.camelCase]: [
       './src/index.js'
     ]
   },
@@ -16,12 +17,17 @@ module.exports = {
   module: {
     rules: [
       {
+        enforce:"pre",
+        test: /\.js$/,
+        loader: "source-map-loader"
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
       },
       {
-        test: /\.js$/, loader: 'eslint-loader', enforce: 'pre'
+        // test: /\.js$/, loader: 'eslint-loader', enforce: 'pre'
       },
       {
         test: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2|mp4|webm)$/,

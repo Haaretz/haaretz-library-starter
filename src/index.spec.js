@@ -1,8 +1,6 @@
 import { method, asyncMethod } from './index';
 
 describe('method', function () {
-  jsdom();
-
   it('is a function', function () {
     expect(method).to.be.a('function');
   });

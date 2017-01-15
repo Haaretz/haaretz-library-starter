@@ -2,7 +2,6 @@ import chaiAsPromised from 'chai-as-promised';
 import dirtyChai from 'dirty-chai';
 import 'babel-polyfill';
 
-window.jsdom = Function.prototype;
 chai.use(chaiAsPromised);
 chai.use(dirtyChai);
 

@@ -92,7 +92,7 @@ module.exports = function (config) {
         //}
       ]
     },
-    browsers: ['PhantomJS'],
+    browsers: ['PhantomJS'], //'Chrome','Firefox' possible
     //
     customLaunchers: {
       Chrome_for_Travis_CI: {
