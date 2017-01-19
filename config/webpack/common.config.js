@@ -7,7 +7,7 @@ module.exports = {
     ]
   },
   resolve: { // see more info here https://github.com/webpack/webpack/issues/1979
-    mainField: ['module','jsnext:browser', 'jsnext:main', 'browser', 'main']
+    mainFields: ['module','jsnext:browser', 'jsnext:main', 'browser', 'main']
   },
   node: {
     global: true,
