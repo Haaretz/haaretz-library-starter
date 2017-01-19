@@ -6,14 +6,17 @@ module.exports = {
     "ecmaVersion": 6,
     "sourceType": "module",
   },
-
+  "plugins": ["mocha"],
   "env": {
+    "mocha": true,
     "es6": true,
     "node": true,
     "browser": true
   },
 
   "rules": {
+    "prefer-arrow-callback": 0,
+    "func-names": 0,
     "import/no-unresolved": 0,
     "import/no-extraneous-dependencies": 0,
     "import/extensions": 0,
@@ -25,7 +28,7 @@ module.exports = {
       "exports": "always-multiline",
       "functions": "never",
     }],
-    "brace-style": [2, "stroustrup", { "allowSingleLine": true  }],
+    "brace-style": [2, "stroustrup", {"allowSingleLine": true}],
     /* Warn about long line */
     "max-len": [1, 100, 2],
     /* Warn about use of console */
@@ -41,7 +44,7 @@ module.exports = {
     /* Warn when referencing an undefined variable */
     "no-undef": [1],
     /* Forbid expressions that are never used */
-    "no-unused-expressions": [2, { allowShortCircuit: true, allowTernary: true  }],
+    "no-unused-expressions": [2, {allowShortCircuit: true, allowTernary: true}],
     /* Warn when declaring a variable without using it */
     "no-unused-vars": [1, {"vars": "local", "args": "none"}],
     "no-warning-comments": [1, {"terms": ["fixme", "todo"], "location": "start"}],
@@ -57,5 +60,5 @@ module.exports = {
       'LabeledStatement',
       'WithStatement',
     ],
-  },
+  }
 }
