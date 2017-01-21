@@ -6,4 +6,4 @@ then
   git push origin --delete gh-pages
 fi
 
-git subtree push --prefix docs/demo-module/$package_version origin gh-pages
+git subtree push --prefix docs/${moduleSafeName}/$package_version origin gh-pages

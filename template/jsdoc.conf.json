@@ -28,7 +28,7 @@
 		"default": {
 			"outputSourceFiles": true
 		},
-    "systemName": "DEMO MODULE",
+    "systemName": "<% print(moduleSafeName.toUpperCase()) %>",
 		"navType": "vertical",
 		"linenums": true,
 		"dateFormat": "MMMM Do YYYY, h:mm:ss a"
