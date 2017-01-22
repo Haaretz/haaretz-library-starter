@@ -112,9 +112,7 @@
     "babel-plugin-rewire": "^1.0.0"
   },
   "dependencies": {
-    "babel-runtime": "^6.20.0",
-    "htz-dispatch-event": "https://github.com/Haaretz/htz-dispatch-event/archive/1.0.3.tar.gz",
-    "htz-get-focusables": "https://github.com/Haaretz/htz-get-focusables/archive/v1.0.2.tar.gz"
+    "babel-runtime": "^6.20.0"
   },
   "nyc": {
     "include": [
