@@ -43,6 +43,7 @@ module.exports = {
     "no-use-before-define": [2, "nofunc"],
     /* Warn when referencing an undefined variable */
     "no-undef": [1],
+    "no-trailing-spaces":0,
     /* Forbid expressions that are never used */
     "no-unused-expressions": [2, {allowShortCircuit: true, allowTernary: true}],
     /* Warn when declaring a variable without using it */
