@@ -1,11 +1,11 @@
-const gulp = require('gulp'),
-	conflict = require('gulp-conflict'),
-	template = require('gulp-template'),
-	path = require('path'),
-	inquirer = require('inquirer'),
-	_ = require('lodash'),
-	fs = require('fs'),
-	execS = require('child_process').execSync;
+const gulp = require('gulp');
+const conflict = require('gulp-conflict');
+const template = require('gulp-template');
+const path = require('path');
+const inquirer = require('inquirer');
+const _ = require('lodash');
+const fs = require('fs');
+const execS = require('child_process').execSync;
 
 const defaults = {
 	moduleNaturalName: process.argv[3] || 'htz-',
@@ -32,7 +32,14 @@ gulp.task('default', function (done) {
 				return done();
 			}
 			delete (answers.moveon);
-			let options = _.defaults(answers, defaults);
+			const options = _.defaults(answers, defaults);
+
+      Object.defineProperty(options, 'moduleSafeName', {
+        get: function () {
+          return this.moduleNaturalName.replace(' ', '-');
+        }
+      });
+
 			const targetFolder = path.join(process.cwd(), options.moduleSafeName);
 			gulp.src(__dirname + '/template/**', { dot: true })  // Note use of __dirname to be relative to generator
 				.pipe(template(options))                 // Lodash template support
