@@ -9,10 +9,13 @@ require('jsdom-global')();
 
 const chai = require('chai'),
   sinonChai = require('sinon-chai'),
-  chaiDirty = require('dirty-chai'),
   chaiAsPromised = require("chai-as-promised");
+
 global.expect = chai.expect;
 global.sinon = require('sinon');
 chai.use(sinonChai);
 chai.use(chaiAsPromised);
+<% if (!typescript) { %>
+const chaiDirty = require('dirty-chai');
 chai.use(chaiDirty); //should come last
+<% } %>
