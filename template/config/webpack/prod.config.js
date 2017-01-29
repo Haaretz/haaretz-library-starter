@@ -44,7 +44,7 @@ module.exports = function (env) {
       ]
     },
     plugins: [
-      new CopyWebpackPlugin([{ from: './static/test.*', to: '', flatten: true }]),
+      new CopyWebpackPlugin([{ from: './static', to: '', flatten: true }]),
       new HtmlWebpackPlugin({
         inject: true,
         template: path.resolve(env.root, 'static/index.html'),

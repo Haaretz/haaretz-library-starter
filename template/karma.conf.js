@@ -17,14 +17,14 @@ module.exports = function (config) {
     // // list of files / patterns to load in the browser
     files: [
       // './node_modules/promise-polyfill/promise.js', // important for PhantomJS
-      'tests/karmaTestsRunner.js', // loads all tests via webpack context require
+      'config/tests/karmaTestsRunner.js', // loads all tests via webpack context require
     ],
     // list of files to exclude
     exclude: [],
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'tests/karmaTestsRunner.js': ['webpack', 'sourcemap']
+      'config/tests/karmaTestsRunner.js': ['webpack', 'sourcemap']
     },
     // // list of paths mappings
     // // can be used to map paths served by the Karma web server to /base/ content
