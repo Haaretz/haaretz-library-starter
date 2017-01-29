@@ -1,14 +1,14 @@
 {
   "name": "slush-haaretz-lib",
   "version": "0.0.4",
-  "description": "Slush generator for haaretz webpack based lib bolierplate",
+  "description": "A Slush-based ES.next module generator with typescript, babel, webpack and testing infrastructure",
   "main": "slushfile.js",
   "scripts": {
     "slush": "slush"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nadavsinai/haaretz-library-starter.git"
+    "url": "git+https://github.com/haaretz/slush-haaretz-lib.git"
   },
   "keywords": [
     "slushgenerator",
@@ -17,9 +17,9 @@
   "author": "Nadav Sinai <ns@nadavsinai.com> (nadavsinai.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nadavsinai/haaretz-library-starter/issues"
+    "url": "https://github.com/haaretz/slush-haaretz-lib/issues"
   },
-  "homepage": "https://github.com/nadavsinai/haaretz-library-starter#readme",
+  "homepage": "https://github.com/haaretz/slush-haaretz-lib#readme",
   "dependencies": {
     "gulp": "^3.9.1",
     "gulp-conflict": "^0.4.0",
