@@ -1,6 +1,6 @@
 {
   "name": "slush-haaretz-lib",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Slush generator for haaretz webpack based lib bolierplate",
   "main": "slushfile.js",
   "scripts": {
