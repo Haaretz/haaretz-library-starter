@@ -7,17 +7,23 @@ const _ = require('lodash');
 const fs = require('fs');
 const execS = require('child_process').execSync;
 
-const defaults = {
-	moduleNaturalName: process.argv[3] || 'htz-',
+const GetSafeName = {
 	get moduleSafeName() {
 		return this.moduleNaturalName.replace(' ', '-');
 	},
-	moduleDescription: '',
-	moduleAuthorName: execS('git config user.name', { encoding: 'utf8' }).split('\n')[0],
-	moduleAuthorEmail: execS('git config user.email', { encoding: 'utf8' }).split('\n')[0]
 };
 
-// const textTransform =textTransformation(transformString);
+const defaults = Object.assign(
+  Object.create(GetSafeName),
+  {
+    moduleNaturalName: process.argv[3] || 'htz-',
+    moduleDescription: '',
+    moduleAuthorName: execS('git config user.name', { encoding: 'utf8' }).split('\n')[0],
+    moduleAuthorEmail: execS('git config user.email', { encoding: 'utf8' }).split('\n')[0]
+  }
+);
+
+// const textTransform = textTransformation(transformString);
 
 gulp.task('default', function (done) {
 	inquirer.prompt([
@@ -32,19 +38,18 @@ gulp.task('default', function (done) {
 				return done();
 			}
 			delete (answers.moveon);
-			const options = _.defaults(answers, defaults);
 
-      Object.defineProperty(options, 'moduleSafeName', {
-        get: function () {
-          return this.moduleNaturalName.replace(' ', '-');
-        }
-      });
+      const options = Object.assign(
+        Object.create(GetSafeName),
+        defaults,
+        answers
+      );
 
 			const targetFolder = path.join(process.cwd(), options.moduleSafeName);
 			gulp.src(__dirname + '/template/**', { dot: true })  // Note use of __dirname to be relative to generator
-				.pipe(template(options))                 // Lodash template support
-				.pipe(conflict(targetFolder))                    // Confirms overwrites on file conflicts
-				.pipe(gulp.dest(targetFolder))                   // Without __dirname here = relative to cwd
+				.pipe(template(options))                           // Lodash template support
+				.pipe(conflict(targetFolder))                      // Confirms overwrites on file conflicts
+				.pipe(gulp.dest(targetFolder))                     // Without __dirname here = relative to cwd
 				.on('end', function () {
 					if (options.typescript) {
 						fs.renameSync(path.join(targetFolder, 'src', 'index.js'), path.join(targetFolder, 'src', 'index.ts'));
