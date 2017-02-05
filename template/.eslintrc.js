@@ -1,19 +1,16 @@
 module.exports = {
   /* Extend airbnb's style-guide enforcement */
   "extends": "eslint-config-airbnb/base",
-
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
   },
   "plugins": ["mocha"],
   "env": {
-    "mocha": true,
     "es6": true,
     "node": true,
     "browser": true
   },
-
   "rules": {
     "prefer-arrow-callback": 0,
     "func-names": 0,
@@ -62,4 +59,4 @@ module.exports = {
       'WithStatement',
     ],
   }
-}
+};
