@@ -31,7 +31,7 @@ module.exports = function (env) {
               loader: 'css-loader',
               options: {
                 importLoaders: 2,
-                modules: true,
+                modules: false,
                 localIdentName: '[name]__[local]'
               }
             },
