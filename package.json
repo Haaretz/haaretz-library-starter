@@ -1,6 +1,6 @@
 {
   "name": "slush-haaretz-lib",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A Slush-based ES.next module generator with typescript, babel, webpack and testing infrastructure",
   "main": "slushfile.js",
   "scripts": {
@@ -14,8 +14,8 @@
     "slushgenerator",
     "haaretz"
   ],
-  "maintainers":[
-    "Jonathan Pollak <jonathan.pollak@haaretz.co.il>"
+  "maintainers": [
+    "Jonathan Pollak <tofu.hawks@gmail.com>"
   ],
   "author": "Nadav Sinai <ns@nadavsinai.com> (nadavsinai.com)",
   "license": "MIT",
