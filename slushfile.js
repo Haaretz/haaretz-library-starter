@@ -7,21 +7,16 @@ const _ = require('lodash');
 const fs = require('fs');
 const execS = require('child_process').execSync;
 
-const GetSafeName = {
-	get moduleSafeName() {
-		return this.moduleNaturalName.replace(' ', '-');
-	},
-};
+const defaults = {
+  moduleNaturalName: process.argv[3] || 'htz-',
+  moduleDescription: '',
+  moduleAuthorName: execS('git config user.name', { encoding: 'utf8' }).split('\n')[0],
+  moduleAuthorEmail: execS('git config user.email', { encoding: 'utf8' }).split('\n')[0],
 
-const defaults = Object.assign(
-  Object.create(GetSafeName),
-  {
-    moduleNaturalName: process.argv[3] || 'htz-',
-    moduleDescription: '',
-    moduleAuthorName: execS('git config user.name', { encoding: 'utf8' }).split('\n')[0],
-    moduleAuthorEmail: execS('git config user.email', { encoding: 'utf8' }).split('\n')[0]
-  }
-);
+  get moduleSafeName() {
+    return this.moduleNaturalName.replace(' ', '-');
+  },
+};
 
 // const textTransform = textTransformation(transformString);
 
@@ -40,12 +35,12 @@ gulp.task('default', function (done) {
 			delete (answers.moveon);
 
       const options = Object.assign(
-        Object.create(GetSafeName),
-        defaults,
+        Object.create(defaults),
         answers
       );
 
 			const targetFolder = path.join(process.cwd(), options.moduleSafeName);
+
 			gulp.src(__dirname + '/template/**', { dot: true })  // Note use of __dirname to be relative to generator
 				.pipe(template(options))                           // Lodash template support
 				.pipe(conflict(targetFolder))                      // Confirms overwrites on file conflicts
