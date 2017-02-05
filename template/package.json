@@ -20,7 +20,7 @@
     "lint": "eslint --global \"$(node config/echo-eslint-test-globals.js)\" --env mocha ./src/**/*.js",
     "prepublish": "npm run build",
     "serve": "browser-sync start -s dist ",
-    "start": "webpack-dev-server --inline --progress --colors --contentBase=static",
+    "dev": "webpack-dev-server --inline --progress --colors --contentBase=static",
     "tdd:browser": "npm run test:browser -- --auto-watch --no-single-run --browsers Chrome",
     "test:browser": "karma start",
     "test": "cross-env NODE_ENV=test nyc mocha-webpack",
