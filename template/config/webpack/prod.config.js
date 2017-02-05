@@ -71,7 +71,7 @@ module.exports = function (env) {
           NODE_ENV: '"production"'
         }
       }),
-      new ExtractTextPlugin('lib.css'),
+      new ExtractTextPlugin('style.css'),
       new UglifyJsPlugin({
         compress: {
           warnings: false,
