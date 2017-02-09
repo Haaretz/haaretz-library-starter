@@ -95,8 +95,8 @@
     "mkdirp": "^0.5.1",
     "mocha": "^3.2.0",
     <% if (typescript) { %>
-    "typescript": "^2.1.5",
-    "awesome-typescript-loader": "3.0.0-beta.18",
+    "typescript": "^2.2.0",
+    "awesome-typescript-loader": "3.0.3",
     "tslib": "1.5.0",
     "@types/chai": "^3.4.34",
     "@types/mocha": "^2.2.38",

@@ -4,6 +4,7 @@
     "allowJs": true,
     "target": "es6",
     "experimentalDecorators": true,
+    "moduleResolution":"node",
     "emitDecoratorMetadata": true,
     "noEmitHelpers": true,
     "importHelpers":true,
