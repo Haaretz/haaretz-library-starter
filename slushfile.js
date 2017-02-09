@@ -1,23 +1,24 @@
-const gulp = require('gulp'),
-	conflict = require('gulp-conflict'),
-	template = require('gulp-template'),
-	path = require('path'),
-	inquirer = require('inquirer'),
-	_ = require('lodash'),
-	fs = require('fs'),
-	execS = require('child_process').execSync;
+const gulp = require('gulp');
+const conflict = require('gulp-conflict');
+const template = require('gulp-template');
+const path = require('path');
+const inquirer = require('inquirer');
+const _ = require('lodash');
+const fs = require('fs');
+const execS = require('child_process').execSync;
 
 const defaults = {
-	moduleNaturalName: process.argv[3] || 'htz-',
-	get moduleSafeName() {
-		return this.moduleNaturalName.replace(' ', '-');
-	},
-	moduleDescription: '',
-	moduleAuthorName: execS('git config user.name', { encoding: 'utf8' }).split('\n')[0],
-	moduleAuthorEmail: execS('git config user.email', { encoding: 'utf8' }).split('\n')[0]
+  moduleNaturalName: process.argv[3] || 'htz-',
+  moduleDescription: '',
+  moduleAuthorName: execS('git config user.name', { encoding: 'utf8' }).split('\n')[0],
+  moduleAuthorEmail: execS('git config user.email', { encoding: 'utf8' }).split('\n')[0],
+
+  get moduleSafeName() {
+    return this.moduleNaturalName.replace(' ', '-');
+  },
 };
 
-// const textTransform =textTransformation(transformString);
+// const textTransform = textTransformation(transformString);
 
 gulp.task('default', function (done) {
 	inquirer.prompt([
@@ -32,12 +33,18 @@ gulp.task('default', function (done) {
 				return done();
 			}
 			delete (answers.moveon);
-			let options = _.defaults(answers, defaults);
+
+      const options = Object.assign(
+        Object.create(defaults),
+        answers
+      );
+
 			const targetFolder = path.join(process.cwd(), options.moduleSafeName);
+
 			gulp.src(__dirname + '/template/**', { dot: true })  // Note use of __dirname to be relative to generator
-				.pipe(template(options))                 // Lodash template support
-				.pipe(conflict(targetFolder))                    // Confirms overwrites on file conflicts
-				.pipe(gulp.dest(targetFolder))                   // Without __dirname here = relative to cwd
+				.pipe(template(options))                           // Lodash template support
+				.pipe(conflict(targetFolder))                      // Confirms overwrites on file conflicts
+				.pipe(gulp.dest(targetFolder))                     // Without __dirname here = relative to cwd
 				.on('end', function () {
 					if (options.typescript) {
 						fs.renameSync(path.join(targetFolder, 'src', 'index.js'), path.join(targetFolder, 'src', 'index.ts'));

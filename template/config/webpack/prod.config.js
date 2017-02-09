@@ -35,7 +35,7 @@ module.exports = function (env) {
           loader: ExtractTextPlugin.extract({
             fallbackLoader: 'style-loader',
             loader: [
-              'css-loader?modules&localIdentName=[name]__[local]&minimize&sourceMap&importLoaders=2',
+              'css-loader?localIdentName=[name]__[local]&minimize&sourceMap&importLoaders=2',
               'postcss-loader',
               'sass-loader?outputStyle=expanded&sourceMap&sourceMapContents'
             ]
@@ -71,7 +71,7 @@ module.exports = function (env) {
           NODE_ENV: '"production"'
         }
       }),
-      new ExtractTextPlugin('lib.css'),
+      new ExtractTextPlugin('style.css'),
       new UglifyJsPlugin({
         compress: {
           warnings: false,
