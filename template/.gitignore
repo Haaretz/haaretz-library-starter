@@ -8,7 +8,6 @@ coverage
 /css
 /sgSrc/assets
 /styleguide
-/dist
 
 # Ignore ternjs port
 .tern-port
