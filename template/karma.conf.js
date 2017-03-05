@@ -71,25 +71,7 @@ module.exports = function (config) {
           dir: 'coverage',
           subdir: normalizationBrowserName
         },
-        {
-          type: 'text',
-          dir: 'coverage',
-          subdir: normalizationBrowserName
-        },
-        {
-          type: 'lcov',
-          dir: 'coverage',
-          subdir: normalizationBrowserName
-        },
-        //{
-        //  type: 'json',
-        //  file : 'coverage-final.json',
-        //  dir: '../coverage',
-        //  instrumenter: {
-        //    '**/*.js': 'isparta' // Force the use of the isparta instrumenter to cover JS files
-        //  },
-        //  //subdir: '.'
-        //}
+        {type: 'text-summary'}
       ]
     },
     browsers: ['PhantomJS'], //'Chrome','Firefox' possible
