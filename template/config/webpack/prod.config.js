@@ -33,8 +33,8 @@ module.exports = function (env) {
         {
           test: /\.scss$/,
           loader: ExtractTextPlugin.extract({
-            fallbackLoader: 'style-loader',
-            loader: [
+            fallback: 'style-loader',
+            use: [
               'css-loader?localIdentName=[name]__[local]&minimize&sourceMap&importLoaders=2',
               'postcss-loader',
               'sass-loader?outputStyle=expanded&sourceMap&sourceMapContents'

@@ -1,5 +1,7 @@
-# Ignore cache directories
-.awcache
+# Ignore patternlab files,  except sources
+/pl/*
+!/pl/source
+!/pl/config
 
 # Ignore external packages
 node_modules
@@ -11,6 +13,7 @@ coverage
 /css
 /sgSrc/assets
 /styleguide
+/dist
 
 # Ignore ternjs port
 .tern-port
@@ -21,3 +24,4 @@ coverage
 # Ignore MacOS store
 .DS_Store
 .nyc_output
+.awcache

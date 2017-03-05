@@ -114,7 +114,6 @@
     "@types/chai": "^3.4.34",
     "@types/mocha": "^2.2.39",
     "@types/sinon": "^1.16.34",
-    "@types/whatwg-fetch": "^0.0.33",
     "typescript": "^2.2.0",
     "awesome-typescript-loader": "3.0.3",
     "tslib": "1.5.0",
