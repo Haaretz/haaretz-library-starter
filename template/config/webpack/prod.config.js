@@ -116,4 +116,3 @@ module.exports = function (env) {
   config.module.rules[tsRuleindex].exclude = /\.spec\.ts$/;
   return config;
 };
-};
