@@ -58,12 +58,15 @@ gulp.task('default', function (done) {
 				.on('end', function () {
 					if (options.typescript) {
 						fs.renameSync(path.join(targetFolder, 'src', 'index.js'), path.join(targetFolder, 'src', 'index.ts'));
+						fs.renameSync(path.join(targetFolder, 'src', 'index.spec.js'), path.join(targetFolder, 'src', 'index.spec.ts'));
+						fs.renameSync(path.join(targetFolder, 'src', 'lib', 'lib.js'), path.join(targetFolder, 'src', 'lib', 'lib.ts'));
 					}
 					else {
 						//remove typescript related files
 						fs.unlinkSync(path.join(targetFolder, 'src', 'custom.d.ts'));
 						fs.unlinkSync(path.join(targetFolder, 'tsconfig.json'));
 						fs.unlinkSync(path.join(targetFolder, 'tsconfig.esm-build.json'));
+						fs.unlinkSync(path.join(targetFolder, 'tslint.json'));
 					}
 					console.log('Running yarn install....');
 					execS('yarn --ignore-scripts', { cwd: targetFolder });
