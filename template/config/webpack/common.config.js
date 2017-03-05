@@ -23,7 +23,7 @@ module.exports = {
     <% if (typescript) { %>
       {
         test:/\.ts$/,
-        loader:'awesome-typescript-loader'
+        loader:'awesome-typescript-loader',
         options: { module: (process.env.NODE_ENV === 'test') ? 'commonjs' : 'es2015' }
       }, <% } %>  <% if (typescript && lint) { %>
       {
