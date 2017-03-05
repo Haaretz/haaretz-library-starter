@@ -10,8 +10,6 @@
     "importHelpers":true,
     "sourceMap": true
   },
-  "exclude": [
-    "node_modules"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useBabel": true,
