@@ -16,7 +16,7 @@ const pkgName = require('../getPackageName');
 
 
 module.exports = function (env) {
-  return webpackMerge(webpackCommon, {
+  const config =  webpackMerge(webpackCommon, {
     bail: true,
     devtool: 'source-map',
     output: {
@@ -33,8 +33,8 @@ module.exports = function (env) {
         {
           test: /\.scss$/,
           loader: ExtractTextPlugin.extract({
-            fallbackLoader: 'style-loader',
-            loader: [
+            fallback: 'style-loader',
+            use: [
               'css-loader?localIdentName=[name]__[local]&minimize&sourceMap&importLoaders=2',
               'postcss-loader',
               'sass-loader?outputStyle=expanded&sourceMap&sourceMapContents'
@@ -112,4 +112,7 @@ module.exports = function (env) {
       'jquery': "jQuery"
     }],
   })
+  const tsRuleindex = config.module.rules.findIndex(rule => rule.loader === 'awesome-typescript-loader')
+  config.module.rules[tsRuleindex].exclude = /\.spec\.ts$/;
+  return config;
 };

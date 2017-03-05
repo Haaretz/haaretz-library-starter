@@ -24,14 +24,12 @@ module.exports = {
       {
         test:/\.ts$/,
         loader:'awesome-typescript-loader'
-      },
-    <% } %>
-  <% if (typescript && lint) { %>
-  {test:/\.ts$/,
-    enforce:'pre',
-    loader:'tslint-loader'
-  },
-<% } %>
+      }, <% } %>  <% if (typescript && lint) { %>
+      {
+        test:/\.ts$/,
+        enforce:'pre',
+        loader:'tslint-loader'
+      },<% } %>
       {
         enforce: "pre",
         test: /\.js$/,
@@ -41,15 +39,13 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
-      },
-  <% if (lint) { %>
+      },  <% if (lint) { %>
       {
         test: /\.js$/, loader: 'eslint-loader', enforce: 'pre', exclude:/node_modules/
-      },
-  <% } %>
+      },  <% } %>
       {
         test: /\.(jpg|png|gif|eot|svg|ttf|woff|woff2|mp4|webm)$/,
-        loader: 'file',  // can replace with  loader: 'url?limit=10000' to make webpack inline assets into dataUrl up to the size limie
+        loader: 'file'  // can replace with  loader: 'url?limit=10000' to make webpack inline assets into dataUrl up to the size limie
       }
     ]
   },

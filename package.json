@@ -31,5 +31,9 @@
     "inquirer": "^2.0.0",
     "lodash": "^4.17.4",
     "slush": "^1.1.1"
+  },
+  "devDependencies": {
+    "gulp-plumber": "^1.1.0",
+    "gulp-util": "^3.0.8"
   }
 }

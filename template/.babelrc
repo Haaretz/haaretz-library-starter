@@ -1,18 +1,7 @@
 {
-  "presets": [
-    [
-      "latest",
-      {
-        "es2015": {
-          "modules": false
-        }
-      }
-    ]
-  ],
+  "presets": [ [ "env" , {"modules": false} ] ],
   "plugins": [
-    [
-      "transform-runtime",
-      {
+    [ "transform-runtime",{
         "helpers": false,
         // defaults to true
         "polyfill": false,
@@ -30,14 +19,7 @@
   "env": {
     "test": {
       "plugins": [
-        "istanbul",
-        "rewire",
-        [
-          "transform-es2015-modules-commonjs-simple",
-          {
-            "noMangle": true
-          }
-        ]
+        "istanbul"
       ]
     }
   },
