@@ -13,7 +13,13 @@
   "license": "MIT",
   "scripts": {
     "update": "ncu",
-    "build": "cross-env NODE_ENV=production webpack -p --progress --display-error-details --color",
+    <% if (typescript) { %>
+    "build": "npm run build:umd && npm run build:esm",
+    "build:esm": "tsc -p tsconfig.esm-build.json",
+    <%  } else { %>
+    "build": "npm run build:umd",
+    <%  }  %>
+    "build:umd": "cross-env NODE_ENV=production webpack -p --progress --display-error-details --color",
     "gh-pages": "config/gh-pages.sh",
     "init": "git init && npm i",
     "jsdoc": "config/jsdoc.sh",
@@ -23,13 +29,15 @@
     "dev": "webpack-dev-server --inline --progress --colors --contentBase=static",
     "tdd:browser": "npm run test:browser -- --auto-watch --no-single-run --browsers Chrome",
     "test:browser": "karma start",
-    "test": "cross-env NODE_ENV=test nyc mocha-webpack",
+    "test": "cross-env NODE_ENV=test mocha-webpack",
     "tdd": "npm test -- --watch",
+    "coverage": "nyc npm t",
     "coverage:report": "nyc report --reporter=html"
   },
   "main": "dist/${moduleSafeName}.min.js",
-  "jsnext:main": "src/index.js",
-  "module":"src/index.js",
+  "jsnext:main": "dist/esm/index.js",
+  "module": "dist/esm/index.js",
+  "typings": "dist/esm/index.d.ts",
   "devDependencies": {
     "autoprefixer": "^6.7.2",
     "babel-cli": "^6.22.2",
@@ -134,15 +142,23 @@
   },
   "nyc": {
     "include": [
-      "src/**/*.js"
+      "src/**/*.{js,ts}"
     ],
     "exclude": [
       "node_modules",
       ".tmp",
-      "src/**/*.spec.js"
+      ".awcache",
+      "src/**/*.spec.{ts,js}"
+    ],
+  "extension": [
+    ".ts",".js"
     ],
     "require": [
+    <% if (typescript) { %>
+      "ts-node/register"
+    <% } else {
       "babel-register"
+    <% } %>
     ],
     "sourceMap": false,
     "instrument": false

@@ -53,6 +53,7 @@ gulp.task('default', function (done) {
 						//remove typescript related files
 						fs.unlinkSync(path.join(targetFolder, 'src', 'custom.d.ts'));
 						fs.unlinkSync(path.join(targetFolder, 'tsconfig.json'));
+						fs.unlinkSync(path.join(targetFolder, 'tsconfig.esm-build.json'));
 					}
 					console.log('Running yarn install....');
 					execS('yarn --ignore-scripts', { cwd: targetFolder });
