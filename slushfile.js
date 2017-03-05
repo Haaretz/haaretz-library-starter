@@ -6,16 +6,19 @@ const inquirer = require('inquirer');
 const _ = require('lodash');
 const fs = require('fs');
 const execS = require('child_process').execSync;
+const plumber = require('gulp-plumber');
+const gutil = require('gulp-util');
+
 
 const defaults = {
-  moduleNaturalName: process.argv[3] || 'htz-',
-  moduleDescription: '',
-  moduleAuthorName: execS('git config user.name', { encoding: 'utf8' }).split('\n')[0],
-  moduleAuthorEmail: execS('git config user.email', { encoding: 'utf8' }).split('\n')[0],
+	moduleNaturalName: process.argv[3] || 'htz-',
+	moduleDescription: '',
+	moduleAuthorName: execS('git config user.name', { encoding: 'utf8' }).split('\n')[0],
+	moduleAuthorEmail: execS('git config user.email', { encoding: 'utf8' }).split('\n')[0],
 
-  get moduleSafeName() {
-    return this.moduleNaturalName.replace(' ', '-');
-  },
+	get moduleSafeName() {
+		return this.moduleNaturalName.replace(' ', '-');
+	},
 };
 
 // const textTransform = textTransformation(transformString);
@@ -34,14 +37,21 @@ gulp.task('default', function (done) {
 			}
 			delete (answers.moveon);
 
-      const options = Object.assign(
-        Object.create(defaults),
-        answers
-      );
+			const options = Object.assign(
+				Object.create(defaults),
+				answers
+			);
 
 			const targetFolder = path.join(process.cwd(), options.moduleSafeName);
 
 			gulp.src(__dirname + '/template/**', { dot: true })  // Note use of __dirname to be relative to generator
+				.pipe(plumber(function (error) {
+						// Output an error message
+						gutil.log(gutil.colors.red('Error (' + error.plugin + '): ' + error.message));
+						// emit the end event, to properly end the task
+						this.emit('end');
+					})
+				)
 				.pipe(template(options))                           // Lodash template support
 				.pipe(conflict(targetFolder))                      // Confirms overwrites on file conflicts
 				.pipe(gulp.dest(targetFolder))                     // Without __dirname here = relative to cwd
