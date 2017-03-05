@@ -23,7 +23,7 @@
 
     "ban": false,
     "block-spacing": [ true, "always" ],
-    "brace-style": [true, "stroustrup", {"allowSingleLine": true}],
+    "brace-style": [true, "1tbs", {"allowSingleLine": true}],
     "class-name": true,
     "comment-format": [
       true,
