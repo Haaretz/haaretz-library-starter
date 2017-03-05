@@ -1,14 +1,9 @@
-import chaiAsPromised from 'chai-as-promised';
-<% if (!typescript) { %>
-import dirtyChai from 'dirty-chai';
-<% } %>
+import chaiAsPromised from 'chai-as-promised'; <% if (!typescript) { %>
+import dirtyChai from 'dirty-chai'; <% } %>
 import 'babel-polyfill';
 
 chai.use(chaiAsPromised)
-<% if (!typescript) { %>
-  chai.use(dirtyChai);
-<% } %>
-
+<% if (!typescript) { %> chai.use(dirtyChai); <% } %>
 
 const testsContext = require.context('../../src', true, /\.spec\.(ts|js)$/);
 testsContext.keys().forEach(function (path) {

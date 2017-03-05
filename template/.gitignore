@@ -24,3 +24,4 @@ coverage
 # Ignore MacOS store
 .DS_Store
 .nyc_output
+.awcache
