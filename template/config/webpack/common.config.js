@@ -24,6 +24,7 @@ module.exports = {
       {
         test:/\.ts$/,
         loader:'awesome-typescript-loader'
+        options: { module: (process.env.NODE_ENV === 'test') ? 'commonjs' : 'es2015' }
       }, <% } %>  <% if (typescript && lint) { %>
       {
         test:/\.ts$/,
