@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import indexInjector from 'inject-loader!./index';
+const indexInjector = require('inject-loader!./index');
 
 const testMock = {
   count: 100,
