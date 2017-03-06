@@ -15,7 +15,7 @@
       true,
       "never",
       {
-        "singleValue": true,
+        "singleValue": false,
         "objectsInArrays": true,
         "arraysInArrays": true
       }
