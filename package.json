@@ -1,6 +1,6 @@
 {
   "name": "slush-haaretz-lib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Slush-based ES.next module generator with typescript, babel, webpack and testing infrastructure",
   "main": "slushfile.js",
   "scripts": {
