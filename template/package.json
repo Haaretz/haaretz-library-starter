@@ -12,11 +12,11 @@
   },
   "license": "MIT",
   "scripts": {
-
     "update": "ncu",
     <% if (typescript) { %>
     "build": "npm run build:umd && npm run build:esm",
     "build:esm": "tsc -p tsconfig.esm-build.json",
+    "build:esnext": "tsc -p tsconfig.esnext-build.json",
     <%  } else { %>
     "build": "npm run build:umd",
     <%  }  %>
@@ -43,7 +43,11 @@
     "coverage:report": "nyc report --reporter=html"
   },
   "main": "dist/${moduleSafeName}.min.js",
-  "jsnext:main": "dist/esm/index.js",
+  <% if (typescript) { %>
+    "jsnext:main": "dist/esnext/index.js",
+  <% } else { %>
+    "jsnext:main": "src/index.js",
+  <% } %>
   "module": "dist/esm/index.js",
   "typings": "dist/esm/index.d.ts",
   "devDependencies": {
@@ -170,5 +174,18 @@
     ],
     "sourceMap": false,
     "instrument": false
+  },
+  "jspm": {
+    "name": "${moduleSafeName}",
+    "main": "index.js",
+    "directories": {
+      <% if (typescript) { %>
+        "lib": "dist/esnext/"
+      <% } else { %>
+        "lib": "src"
+      <% } %>
+    },
+    "dependencies": {},
+    "devDependencies": {}
   }
 }
