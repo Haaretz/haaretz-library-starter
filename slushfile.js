@@ -71,7 +71,10 @@ gulp.task('default', function (done) {
 					if (!options.lint) {
 						fs.unlinkSync(path.join(targetFolder, '.eslintrc.js'));
 						fs.unlinkSync(path.join(targetFolder, '.eslintignore'));
-						fs.unlinkSync(path.join(targetFolder, 'tslint.json'));
+
+            if (options.typescript) {
+              fs.unlinkSync(path.join(targetFolder, 'tslint.json'));
+            }
 					}
 					console.log('Running yarn install....');
 					execS('yarn --ignore-scripts', { cwd: targetFolder });
