@@ -1,0 +1,20 @@
+{
+  "extends": "./tsconfig",
+  "compilerOptions": {
+    "module": "es6",
+    "allowJs":false,
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "outDir": "dist/esnext",
+    "target": "es2017",
+    "lib": ["DOM", "ES6", "ES2016", "ES2017", "DOM.Iterable", "ScriptHost"]
+  },
+  "include": [
+    "src/**/*"
+  ],
+  "exclude":[
+    "node_modules",
+    "src/**/*.d.ts",
+    "src/**/*.spec.ts"
+  ]
+}
