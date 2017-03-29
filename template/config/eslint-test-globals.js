@@ -1,1 +1,1 @@
-module.exports = ["jsdom", "expect", 'chai', "sinon"];
+module.exports = ['jsdom', 'describe', 'it'];
