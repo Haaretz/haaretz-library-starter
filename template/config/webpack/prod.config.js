@@ -112,7 +112,11 @@ module.exports = function (env) {
       'jquery': "jQuery"
     }],
   })
-  const tsRuleindex = config.module.rules.findIndex(rule => rule.loader === 'awesome-typescript-loader')
-  config.module.rules[tsRuleindex].exclude = /\.spec\.ts$/;
+
+  <% if (typescript) { %>
+    const tsRuleindex = config.module.rules.findIndex(rule => rule.loader === 'awesome-typescript-loader')
+    config.module.rules[tsRuleindex].exclude = /\.spec\.ts$/;
+  <% } %>
+
   return config;
 };
